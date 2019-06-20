@@ -34,6 +34,7 @@
                     <td th:text=${usuario.id}></td>
                     <td th:text=${usuario.nome}></td>
                     <td th:text=${usuario.codigoAcesso}></td>
+                    <td th:text=${usuario.descricao}></td>
                     <td th:text=${usuario.email}></td>
                     <td>
                         <a class="btn btn-warning" th:href="@{'./editar/' + ${usuario.id}}"
