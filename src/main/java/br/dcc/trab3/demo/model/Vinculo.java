@@ -6,10 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
 
 /**
  * Vinculo
@@ -28,9 +26,7 @@ public class Vinculo {
     private List<Etiqueta> listaEtiqueta;
     @OneToMany
 	private List<Anotacao> listaAnotacao;
-	@ManyToOne
-	private Vinculo vinculo;
-    
+	
 	public Long getId() {
 		return id;
 	}
@@ -65,7 +61,7 @@ public class Vinculo {
     public Vinculo() {
     }
 
-    public Vinculo(Long id, @NotNull Item itemOrigem, @NotNull Item itemDestino, List<Etiqueta> listaEtiqueta,
+    public Vinculo(Long id, Item itemOrigem, Item itemDestino, List<Etiqueta> listaEtiqueta,
             List<Anotacao> listaAnotacao) {
         this.id = id;
         this.itemOrigem = itemOrigem;
@@ -73,15 +69,5 @@ public class Vinculo {
         this.listaEtiqueta = listaEtiqueta;
         this.listaAnotacao = listaAnotacao;
     }
-
-	public Vinculo getVinculo() {
-		return vinculo;
-	}
-
-	public void setVinculo(Vinculo vinculo) {
-		this.vinculo = vinculo;
-	}
-
-    
 
 }

@@ -60,5 +60,23 @@ public class Etiqueta {
         URL = uRL;
     }
 
+    public Vinculo getVinculo() {
+        return vinculo;
+    }
+
+    public void setVinculo(Vinculo vinculo) {
+        this.vinculo = vinculo;
+    }
+
+    public Etiqueta(Long id, @NotBlank(message = "Campo obrigatório") String titulo,
+            @NotBlank(message = "Campo obrigatório") String descricao,
+            @NotBlank(message = "Campo obrigatório") String uRL, Vinculo vinculo) {
+        this.id = id;
+        this.titulo = titulo;
+        this.descricao = descricao;
+        URL = uRL;
+        this.vinculo = vinculo;
+    }
+
     
 }

@@ -19,6 +19,7 @@ import br.dcc.trab3.demo.model.Etiqueta;
  * EtiquetaController
  */
 @Controller
+@RequestMapping("/etiqueta/")
 public class EtiquetaController {
 
     @Autowired
@@ -60,10 +61,10 @@ public class EtiquetaController {
        ModelAndView mv = new ModelAndView();
        if (binding.hasErrors()) {
            mv.setViewName("etiqueta/etiqueta-edit");
-           mv.addObject("usuario", etiqueta);
+           mv.addObject("etiqueta", etiqueta);
            return mv;
        }
-       mv.setViewName("redirect:/usuario/");
+       mv.setViewName("redirect:/etiqueta/");
        etiquetas.save(etiqueta);
        return mv;
     }
@@ -71,6 +72,6 @@ public class EtiquetaController {
     @GetMapping("/deletar/{id}")
     public String deletarEtiqueta(@PathVariable Long id){
         etiquetas.deleteById(id);
-        return "redirect:/usuario/";
+        return "redirect:/etiqueta/";
     }
 }
