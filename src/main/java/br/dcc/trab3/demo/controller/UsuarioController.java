@@ -45,7 +45,7 @@ public class UsuarioController {
             return mv;
         }
         usuarios.save(usuario);
-        mv.setViewName("usuario/");
+        mv.setViewName("redirect:/usuario/");
         return mv;
     }
 
@@ -63,7 +63,7 @@ public class UsuarioController {
            mv.addObject("usuario", usuario);
            return mv;
        }
-       mv.setViewName("/usuario/");
+       mv.setViewName("redirect:/usuario/");
        usuarios.save(usuario);
        return mv;
     }
