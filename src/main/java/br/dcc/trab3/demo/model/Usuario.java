@@ -1,9 +1,12 @@
 package br.dcc.trab3.demo.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 /**
@@ -23,6 +26,8 @@ public class Usuario {
     private String descricao;
     @NotBlank(message = "Campo obrigatório")
     private String email;
+    @OneToMany
+    private List<Anotacao> listAnotacoes;
 
     public Long getId() {
         return id;
@@ -76,6 +81,14 @@ public class Usuario {
         this.codigoAcesso = codigoAcesso;
         this.descricao = descricao;
         this.email = email;
+    }
+
+    public List<Anotacao> getListAnotacoes() {
+        return listAnotacoes;
+    }
+
+    public void setListAnotacoes(List<Anotacao> listAnotacoes) {
+        this.listAnotacoes = listAnotacoes;
     }
 
 }
