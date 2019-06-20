@@ -2,28 +2,34 @@ package br.dcc.trab3.demo.model;
 
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 /**
  * Vinculo
  */
+@Entity
 public class Vinculo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @NotNull
+	private Long id;
+	@OneToOne
     private Item itemOrigem;
-    @NotNull
-    private Item itemDestino;
+	@OneToOne
+	private Item itemDestino;
     @OneToMany
     private List<Etiqueta> listaEtiqueta;
     @OneToMany
-    private List<Anotacao> listaAnotacao;
+	private List<Anotacao> listaAnotacao;
+	@ManyToOne
+	private Vinculo vinculo;
     
 	public Long getId() {
 		return id;
@@ -67,6 +73,14 @@ public class Vinculo {
         this.listaEtiqueta = listaEtiqueta;
         this.listaAnotacao = listaAnotacao;
     }
+
+	public Vinculo getVinculo() {
+		return vinculo;
+	}
+
+	public void setVinculo(Vinculo vinculo) {
+		this.vinculo = vinculo;
+	}
 
     
 
