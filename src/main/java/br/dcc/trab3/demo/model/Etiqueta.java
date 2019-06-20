@@ -4,7 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+
 
 /**
  * Etiqueta
@@ -21,6 +23,8 @@ public class Etiqueta {
     private String descricao;
     @NotBlank(message = "Campo obrigatório")
     private String URL;
+    @ManyToOne
+    private Vinculo vinculo;
 
     public Etiqueta(){}
 

@@ -31,6 +31,8 @@ public class Anotacao {
     private Date dataInclusao;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataAlteracao;
+    @ManyToOne
+    private Vinculo vinculo;
 
     public Long getId() {
         return id;
