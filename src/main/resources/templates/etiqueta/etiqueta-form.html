@@ -15,8 +15,8 @@
         <form th:action="@{./salvar}" th:object="${etiqueta}" method="POST">
             <div class="form-group">
                 <label>Título</label>
-                <input type="text" class="form-control" th:field="*{nome}" />
-                <strong th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></strong>
+                <input type="text" class="form-control" th:field="*{titulo}" />
+                <strong th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></strong>
             </div>
             <div class="form-group">
                 <label>Descrição</label>
