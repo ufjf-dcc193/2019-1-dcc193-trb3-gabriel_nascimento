@@ -91,4 +91,10 @@ public class Usuario {
         this.listAnotacoes = listAnotacoes;
     }
 
+    @Override
+    public String toString() {
+        return "Usuario [codigo=" + codigoAcesso + ", descricao=" + descricao + ", email=" + email + ", id=" + id + ", nome="
+                + nome + "]";
+    }
+
 }

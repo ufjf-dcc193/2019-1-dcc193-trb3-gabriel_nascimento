@@ -3,10 +3,12 @@ package br.dcc.trab3.demo.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
@@ -25,7 +27,7 @@ public class Anotacao {
     @NotBlank(message = "Campo obrigatório")
     private String descricao;
     private String URL;
-    @ManyToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Usuario usuario;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataInclusao;
@@ -88,6 +90,12 @@ public class Anotacao {
 
     public void setDataAlteracao(Date dataAlteracao) {
         this.dataAlteracao = dataAlteracao;
+    }
+
+    @Override
+    public String toString() {
+        return "Anotacao [dataAlteracao=" + dataAlteracao + ", dataInclusao=" + dataInclusao + ", descricao="
+                + descricao + ", id=" + id + ", titulo=" + titulo + ", url=" + URL + "]";
     }
     
 }

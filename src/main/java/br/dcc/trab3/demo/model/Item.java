@@ -3,6 +3,7 @@ package br.dcc.trab3.demo.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,11 +21,11 @@ public class Item {
     private Long id;
     @NotBlank(message = "Campo Obrigatório")
     private String titulo;
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Etiqueta> listaEtiqueta;
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Anotacao> listaAnotacao;
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Vinculo> listaVinculo;
 
     public Long getId() {
@@ -70,7 +71,13 @@ public class Item {
     public Item() {
     }
 
-  
+    public Item(String titulo) {        
+        this.titulo = titulo;
+    }
 
-    
+    @Override
+    public String toString() {
+        return "Item [id=" + id + ", titulo=" + titulo + ", vínculos=" + listaVinculo + "]";
+    }
+   
 }

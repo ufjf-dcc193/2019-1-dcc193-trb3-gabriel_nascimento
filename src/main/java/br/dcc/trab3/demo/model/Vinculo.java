@@ -3,6 +3,7 @@ package br.dcc.trab3.demo.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,13 +19,13 @@ public class Vinculo {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
     private Item itemOrigem;
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	private Item itemDestino;
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Etiqueta> listaEtiqueta;
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
 	private List<Anotacao> listaAnotacao;
 	
 	public Long getId() {
@@ -68,6 +69,16 @@ public class Vinculo {
         this.itemDestino = itemDestino;
         this.listaEtiqueta = listaEtiqueta;
         this.listaAnotacao = listaAnotacao;
+	}
+	
+	public Vinculo(Item itemOrigem, Item itemDestino) {
+        this.itemOrigem = itemOrigem;
+        this.itemDestino = itemDestino;
+	}
+	
+	@Override
+    public String toString() {
+        return "Vinculo [id=" + id + ", itemDestino=" + itemDestino + ", itemOrigem=" + itemOrigem + "]";
     }
 
 }

@@ -87,6 +87,10 @@ public class Etiqueta {
         URL = uRL;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Etiqueta [descricao=" + descricao + ", id=" + id + ", titulo=" + titulo + ", url=" + URL + "]";
+    }
+
     
 }
