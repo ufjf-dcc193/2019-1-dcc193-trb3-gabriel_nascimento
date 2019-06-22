@@ -78,5 +78,15 @@ public class Etiqueta {
         this.vinculo = vinculo;
     }
 
+    public Etiqueta(Long id, @NotBlank(message = "Campo obrigatório") String titulo,
+            @NotBlank(message = "Campo obrigatório") String descricao,
+            @NotBlank(message = "Campo obrigatório") String uRL) {
+        this.id = id;
+        this.titulo = titulo;
+        this.descricao = descricao;
+        URL = uRL;
+    }
+
+    
     
 }

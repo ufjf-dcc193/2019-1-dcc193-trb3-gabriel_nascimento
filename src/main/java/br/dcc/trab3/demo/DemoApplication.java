@@ -34,7 +34,7 @@ public class DemoApplication {
 	InitializingBean sendDatabase() {
 		return () -> {
 			vinculos.save(new Vinculo());
-			etiquetas.save(new Etiqueta(null, "Fisica 1", "Mecânica 1", "www.ufjf.br", vinculos.findAll().get(0)));
+			etiquetas.save(new Etiqueta(null, "Fisica 1", "Mecânica 1", "www.ufjf.br"));
 			usuarios.save(new Usuario(null, "Gabriel Nascimento", "DCC193", "Estudante de TI", "gabriel.nascimento@ice.ufjf.br"));
 		};}
 
