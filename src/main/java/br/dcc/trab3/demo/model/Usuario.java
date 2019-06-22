@@ -16,7 +16,7 @@ import javax.validation.constraints.NotBlank;
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @NotBlank(message = "Campo obrigatório")
     private String nome;
