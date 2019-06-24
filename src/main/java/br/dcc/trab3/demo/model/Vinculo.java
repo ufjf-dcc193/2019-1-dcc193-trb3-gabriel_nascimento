@@ -2,6 +2,7 @@ package br.dcc.trab3.demo.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,9 +26,11 @@ public class Vinculo {
     private Item itemOrigem;
 	@OneToOne(fetch = FetchType.LAZY)
 	private Item itemDestino;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
+    orphanRemoval = true)
     private List<Etiqueta> listaEtiqueta;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
+    orphanRemoval = true)
 	private List<Anotacao> listaAnotacao;
 	
 	public Long getId() {

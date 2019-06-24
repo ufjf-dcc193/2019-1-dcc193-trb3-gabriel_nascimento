@@ -2,7 +2,9 @@ package br.dcc.trab3.demo.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +30,8 @@ public class Usuario {
     private String descricao;
     @NotBlank(message = "Campo obrigatório")
     private String email;
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
+    orphanRemoval = true)
     private List<Anotacao> listAnotacoes;
 
     public Long getId() {
