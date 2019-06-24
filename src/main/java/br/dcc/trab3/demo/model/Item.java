@@ -24,11 +24,14 @@ public class Item {
     private Long id;
     @NotBlank(message = "Campo Obrigatório")
     private String titulo;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
+    orphanRemoval = true)
     private List<Etiqueta> listaEtiqueta;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
+    orphanRemoval = true)
     private List<Anotacao> listaAnotacao;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
+    orphanRemoval = true)
     private List<Vinculo> listaVinculo;
 
     public Long getId() {
