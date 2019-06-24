@@ -7,7 +7,7 @@ import br.dcc.trab3.demo.model.Vinculo;
 /**
  * VinculosRepository
  */
-public interface VinculosRepository extends JpaRepository<Vinculo, Long>{
+public interface VinculoRepository extends JpaRepository<Vinculo, Long>{
 
     
 }
