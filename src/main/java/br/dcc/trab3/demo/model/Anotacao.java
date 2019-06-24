@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
@@ -17,6 +18,7 @@ import javax.validation.constraints.NotBlank;
  * Anotacao
  */
 @Entity
+@Table(name = "anotacao")
 public class Anotacao {
 
     @Id

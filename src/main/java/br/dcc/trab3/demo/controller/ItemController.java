@@ -65,11 +65,14 @@ public class ItemController {
     @GetMapping("/editar/{id}")
     public String preEditarEtiqueta(@PathVariable Long id, Model model){
         model.addAttribute("item", itens.findById(id).get());
+        model.addAttribute("listAnotacoes", anotacoes.findAll());
+        model.addAttribute("listEtiquetas", etiquetas.findAll());
+        model.addAttribute("listVinculos", vinculos.findAll());
         return "item/item-edit";
     }
 
     @PostMapping("/editar/{id}")
-    public ModelAndView editarSalvarUsuario(@Valid Item item, @PathVariable Long id, BindingResult binding){
+    public ModelAndView editarSalvaretiqueta(@Valid Item item, @PathVariable Long id, BindingResult binding){
        ModelAndView mv = new ModelAndView();
        if (binding.hasErrors()) {
             mv.setViewName("item/item-form");
@@ -84,7 +87,7 @@ public class ItemController {
     @GetMapping("/deletar/{id}")
     public String deletarEtiqueta(@PathVariable Long id){
         itens.deleteById(id);
-        return "redirect:/usuario/";
+        return "redirect:/item/";
     }
     
 }
