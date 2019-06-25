@@ -23,16 +23,18 @@
                 <th>#</th>  
                 <th>Item Origem</th>
                 <th>Item Destino</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
-                <tr th:each="item:${listItens}">
-                    <td th:text=${item.id}></td>
-                    <td th:text=${item.titulo}></td>
+                <tr th:each="vinculo:${listVinculos}">
+                    <td th:text=${vinculo.id}></td>
+                    <td th:text=${vinculo.itemOrigem.titulo}></td>
+                    <td th:text=${vinculo.itemDestino.titulo}></td>
                     <td >
-                        <a class="btn btn-warning" th:href="@{'./editar/' + ${item.id}}"
+                        <a class="btn btn-warning" th:href="@{'./editar/' + ${vinculo.id}}"
                         role="button">Editar</a>
-                        <a class="btn btn-danger" th:href="@{'./deletar/' + ${item.id}}"
+                        <a class="btn btn-danger" th:href="@{'./deletar/' + ${vinculo.id}}"
                         role="button">Excluir</a>
                     </td>
                   </tr>

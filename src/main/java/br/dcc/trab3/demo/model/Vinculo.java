@@ -20,17 +20,15 @@ import javax.persistence.Table;
 public class Vinculo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@OneToOne(fetch = FetchType.LAZY)
     private Item itemOrigem;
 	@OneToOne(fetch = FetchType.LAZY)
 	private Item itemDestino;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
-    orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Etiqueta> listaEtiqueta;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
-    orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY)
 	private List<Anotacao> listaAnotacao;
 	
 	public Long getId() {

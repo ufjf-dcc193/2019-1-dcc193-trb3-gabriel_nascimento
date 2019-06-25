@@ -22,7 +22,7 @@ import javax.validation.constraints.NotBlank;
 public class Anotacao {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotBlank(message = "Campo obrigatório")
     private String titulo;
