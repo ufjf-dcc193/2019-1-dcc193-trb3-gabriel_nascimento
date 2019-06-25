@@ -55,6 +55,9 @@ public class ItemController {
         if(binding.hasErrors()){
             mv.setViewName("item/item-form");
             mv.addObject("item", item);
+            mv.addObject("listAnotacoes", anotacoes.findAll());
+            mv.addObject("listEtiquetas", etiquetas.findAll());
+            mv.addObject("listVinculos", vinculos.findAll());
             return mv;
         }
         itens.save(item);
@@ -75,9 +78,11 @@ public class ItemController {
     public ModelAndView editarSalvaretiqueta(@Valid Item item, @PathVariable Long id, BindingResult binding){
        ModelAndView mv = new ModelAndView();
        if (binding.hasErrors()) {
-            mv.setViewName("item/item-form");
-            mv.addObject("item", item);
-            return mv;
+        mv.setViewName("item/item-form");
+        mv.addObject("item", item);
+        mv.addObject("listAnotacoes", anotacoes.findAll());
+        mv.addObject("listEtiquetas", etiquetas.findAll());
+        mv.addObject("listVinculos", vinculos.findAll());
        }
        mv.setViewName("redirect:/item/");
        itens.save(item);

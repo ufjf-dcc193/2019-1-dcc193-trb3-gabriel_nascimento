@@ -22,7 +22,7 @@
                 <label for="anotacao">Anotações</label>
                 <select class="custom-select" id="anotacao" name="listaAnotacao" multiple>
                     <div class="container" th:each="anotacao: ${listAnotacoes}" th:object=${anotacao}>
-                        <option value="" th:value=*{id} th:text="*{'Título: '+titulo}"></option>
+                        <option value="" th:value=*{id} th:text="*{titulo}"></option>
                     </div>
               </select>
             </div>
@@ -30,7 +30,7 @@
                 <label for="etiqueta">Etiquetas</label>
                 <select class="custom-select" id="etiqueta" name="listaEtiqueta" multiple>
                     <div class="container" th:each="etiqueta: ${listEtiquetas}" th:object=${etiqueta}>
-                      <option value="" th:value=*{id} th:text="*{'Título: '+titulo}"></option>
+                      <option value="" th:value=*{id} th:text="*{titulo}"></option>
                     </div>
               </select>
             </div>

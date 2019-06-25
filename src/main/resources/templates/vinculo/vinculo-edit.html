@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../webjars/bootstrap/4.3.1/css/bootstrap.min.css"rel="stylesheet">
+    <title>Novo vínculo</title>
+</head>
+<body>
+    <div class="container">
+        <div th:replace="fragments/header :: header"></div>
+        <br/>
+        <h5 style="text-align: center">Editar vínculo</h5>
+        <form th:action="@{./salvar}" th:object="${vinculo}" method="POST">
+            <input type="text" th:field="*{id}" class="d-none" />
+            <div class="form-group">
+                <label>Item Origem</label>
+                <select class="custom-select" id="itemOrigem" name="itemOrigem">
+                    <div class="container" th:each="item: ${listItens}" th:object=${item}>
+                      <option value="" th:value=*{id} th:text="*{titulo}"></option>
+                    </div>
+              </select>
+            </div>
+            <div class="form-group">
+                <label>Item Destino</label>
+                <select class="custom-select" id="itemDestino" name="itemDestino">
+                    <div class="container" th:each="item: ${listItens}" th:object=${item}>
+                      <option value="" th:value=*{id} th:text="*{titulo}"></option>
+                    </div>
+              </select>
+            </div>
+            <div class="form-group">
+                <label for="anotacao">Anotações</label>
+                <select class="custom-select" id="anotacao" name="listaAnotacao" multiple>
+                    <div class="container" th:each="anotacao: ${listAnotacoes}" th:object=${anotacao}>
+                        <option value="" th:value=*{id} th:text="*{titulo}"></option>
+                    </div>
+              </select>
+            </div>
+            <div class="form-group">
+                <label for="etiqueta">Etiquetas</label>
+                <select class="custom-select" id="etiqueta" name="listaEtiqueta" multiple>
+                    <div class="container" th:each="etiqueta: ${listEtiquetas}" th:object=${etiqueta}>
+                      <option value="" th:value=*{id} th:text="*{titulo}"></option>
+                    </div>
+              </select>
+            </div>
+            <input type="submit" class="btn btn-primary" />
+            <input type="reset" class="btn btn-warning" />
+        </form>   
+        <div th:replace="fragments/footer :: footer"></div>
+    </div>
+    <script src="../webjars/bootstrap/4.3.1/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../webjars/jquery/2.1.4/jquery.js" type="text/javascript"></script>
+</body>
+</html>
