@@ -94,9 +94,9 @@ public class VinculoController {
     }
 
     @GetMapping("/deletar/{id}")
-    public String deletarEtiqueta(@PathVariable Long id){
-        itens.deleteById(id);
-        return "redirect:/item/";
+    public String deletarVinculo(@PathVariable Long id){
+        vinculos.deleteById(id);
+        return "redirect:/vinculo/";
     }
     
 }
