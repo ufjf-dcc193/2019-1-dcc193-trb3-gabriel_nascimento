@@ -1,5 +1,6 @@
 package br.dcc.trab3.demo.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import br.dcc.trab3.demo.dao.AnotacaoRepository;
 import br.dcc.trab3.demo.dao.EtiquetaRepository;
 import br.dcc.trab3.demo.dao.ItemRepository;
 import br.dcc.trab3.demo.dao.VinculoRepository;
+import br.dcc.trab3.demo.model.Usuario;
 import br.dcc.trab3.demo.model.Vinculo;
 
 /**
@@ -38,7 +40,11 @@ public class VinculoController {
     ItemRepository itens;
 
     @RequestMapping("")
-    public String homeVinculo(Model model){
+    public String homeVinculo(Model model, HttpSession session){
+        if(session.getAttribute("ativo") == null){
+            model.addAttribute("usuario", new Usuario());
+            return "redirect:/";
+        }
         model.addAttribute("listVinculos", vinculos.findAll());
         return "vinculo/vinculo-index";
     }

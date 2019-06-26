@@ -42,6 +42,7 @@ public class DemoApplication {
 			itens.save(new Item("Item 2"));
 			vinculos.save(new Vinculo(itens.findById(1L).get(), itens.findById(2L).get()));
 			etiquetas.save(new Etiqueta(null, "Fisica 1", "Mecânica 1", "www.ufjf.br"));
+			usuarios.save(new Usuario(null, "admin", "admin","administrator", "admin@admin.com"));
 			usuarios.save(new Usuario(null, "Gabriel Nascimento", "DCC193", "Estudante de TI", "gabriel.nascimento@ice.ufjf.br"));
 		};}
 

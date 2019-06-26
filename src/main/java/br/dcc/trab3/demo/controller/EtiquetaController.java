@@ -1,5 +1,6 @@
 package br.dcc.trab3.demo.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.dcc.trab3.demo.dao.EtiquetaRepository;
 import br.dcc.trab3.demo.model.Etiqueta;
+import br.dcc.trab3.demo.model.Usuario;
 
 /**
  * EtiquetaController
@@ -26,7 +28,11 @@ public class EtiquetaController {
     EtiquetaRepository etiquetas;
 
     @RequestMapping("")
-    public String homeEtiqueta(Model model){
+    public String homeEtiqueta(Model model, HttpSession session){
+        if(session.getAttribute("ativo") == null){
+            model.addAttribute("usuario", new Usuario());
+            return "redirect:/";
+        }
         model.addAttribute("listEtiquetas", etiquetas.findAll());
         return "etiqueta/etiqueta-index";
     }

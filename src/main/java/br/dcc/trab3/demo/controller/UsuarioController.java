@@ -1,5 +1,6 @@
 package br.dcc.trab3.demo.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,11 @@ public class UsuarioController {
     UsuarioRepository usuarios;
 
     @RequestMapping("")
-    public String homeUsuario(Model model){
+    public String homeUsuario(Model model, HttpSession session){
+        if(session.getAttribute("ativo") == null){
+            model.addAttribute("usuario", new Usuario());
+            return "redirect:/";
+        }
         model.addAttribute("listUsuarios", usuarios.findAll());
         return "usuario/usuario-index";
     }
