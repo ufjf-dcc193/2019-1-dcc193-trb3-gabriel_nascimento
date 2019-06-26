@@ -27,11 +27,9 @@ public class Item {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
     orphanRemoval = true)
     private List<Etiqueta> listaEtiqueta;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
-    orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Anotacao> listaAnotacao;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
-    orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Vinculo> listaVinculo;
 
     public Long getId() {

@@ -76,7 +76,7 @@ public class Etiqueta {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
-        URL = uRL;
+        this.URL = uRL;
         this.vinculo = vinculo;
     }
 

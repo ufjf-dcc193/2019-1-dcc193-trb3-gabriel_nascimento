@@ -8,11 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 import javax.validation.constraints.NotBlank;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * Anotacao
@@ -28,15 +28,19 @@ public class Anotacao {
     private String titulo;
     @NotBlank(message = "Campo obrigatório")
     private String descricao;
-    private String URL;
-    @OneToOne(fetch = FetchType.LAZY)
+    private String url;
+    @ManyToOne(fetch = FetchType.LAZY)
     private Usuario usuario;
-    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataInclusao;
-    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataAlteracao;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Vinculo vinculo;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Item item;
+
+    
 
     public Long getId() {
         return id;
@@ -63,11 +67,11 @@ public class Anotacao {
     }
 
     public String getURL() {
-        return URL;
+        return url;
     }
 
     public void setURL(String uRL) {
-        URL = uRL;
+        this.url = uRL;
     }
 
     public Usuario getUsuario() {
@@ -97,7 +101,32 @@ public class Anotacao {
     @Override
     public String toString() {
         return "Anotacao [dataAlteracao=" + dataAlteracao + ", dataInclusao=" + dataInclusao + ", descricao="
-                + descricao + ", id=" + id + ", titulo=" + titulo + ", url=" + URL + "]";
+                + descricao + ", id=" + id + ", titulo=" + titulo + ", url=" + url + "]";
     }
-    
+
+    public Anotacao(Long id, String titulo, String descricaoTextual, String url, Date dtInclusao, Date dtAlteracao,
+            Usuario usuario, Item item) {
+        this.id = id;
+        this.titulo = titulo;
+        this.descricao = descricaoTextual;
+        this.url = url;
+        this.dataInclusao = dtInclusao;
+        this.dataAlteracao = dtAlteracao;
+        this.usuario = usuario;
+        this.item = item;
+    }
+
+    public Anotacao(Long id, String titulo, String descricaoTextual, String url, Date dtInclusao, Date dtAlteracao, Usuario usuario, Item item, Vinculo vinculo) {
+        this.id = id;
+        this.titulo = titulo;
+        this.descricao = descricaoTextual;
+        this.url = url;
+        this.dataInclusao = dtInclusao;
+        this.dataAlteracao = dtAlteracao;
+        this.usuario = usuario;
+        this.item = item;
+        this.vinculo = vinculo;
+    }
+
+    public Anotacao(){}
 }
