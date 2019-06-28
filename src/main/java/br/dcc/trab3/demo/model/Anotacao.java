@@ -1,7 +1,5 @@
 package br.dcc.trab3.demo.model;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,9 +9,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import javax.validation.constraints.NotBlank;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 /**
  * Anotacao
  */
@@ -31,10 +26,8 @@ public class Anotacao {
     private String url;
     @ManyToOne(fetch = FetchType.LAZY)
     private Usuario usuario;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dataInclusao;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dataAlteracao;
+    private String dataInclusao;
+    private String dataAlteracao;
     @ManyToOne(fetch = FetchType.LAZY)
     private Vinculo vinculo;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -82,19 +75,19 @@ public class Anotacao {
         this.usuario = usuario;
     }
 
-    public Date getDataInclusao() {
+    public String getDataInclusao() {
         return dataInclusao;
     }
 
-    public void setDataInclusao(Date dataInclusao) {
+    public void setDataInclusao(String dataInclusao) {
         this.dataInclusao = dataInclusao;
     }
 
-    public Date getDataAlteracao() {
+    public String getDataAlteracao() {
         return dataAlteracao;
     }
 
-    public void setDataAlteracao(Date dataAlteracao) {
+    public void setDataAlteracao(String dataAlteracao) {
         this.dataAlteracao = dataAlteracao;
     }
 
@@ -104,7 +97,7 @@ public class Anotacao {
                 + descricao + ", id=" + id + ", titulo=" + titulo + ", url=" + url + "]";
     }
 
-    public Anotacao(Long id, String titulo, String descricaoTextual, String url, Date dtInclusao, Date dtAlteracao,
+    public Anotacao(Long id, String titulo, String descricaoTextual, String url, String dtInclusao, String dtAlteracao,
             Usuario usuario, Item item) {
         this.id = id;
         this.titulo = titulo;
@@ -116,7 +109,7 @@ public class Anotacao {
         this.item = item;
     }
 
-    public Anotacao(Long id, String titulo, String descricaoTextual, String url, Date dtInclusao, Date dtAlteracao, Usuario usuario, Item item, Vinculo vinculo) {
+    public Anotacao(Long id, String titulo, String descricaoTextual, String url, String dtInclusao, String dtAlteracao, Usuario usuario, Item item, Vinculo vinculo) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricaoTextual;
