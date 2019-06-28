@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.dcc.trab3.demo.dao.UsuarioRepository;
 import br.dcc.trab3.demo.model.Usuario;
@@ -75,8 +76,15 @@ public class UsuarioController {
     }
 
     @GetMapping("/deletar/{id}")
-    public String deletarUsuario(@PathVariable Long id){
+    public String deletarUsuario(@PathVariable Long id, HttpSession session, RedirectAttributes atributes){
+        Usuario usuarioLogado = (Usuario) session.getAttribute("ativo");
+        Usuario usuarioExcluir = usuarios.findById(id).get();
+        if(usuarioLogado.getId().equals(usuarioExcluir.getId())){
+            atributes.addFlashAttribute("mensagem", String.format("O usuário logado não pode excluir ele mesmo."));
+            return "redirect:/usuario/";
+        }
         usuarios.deleteById(id);
+        atributes.addFlashAttribute("mensagem", String.format("O usuário foi excluído com sucesso."));
         return "redirect:/usuario/";
     }
     

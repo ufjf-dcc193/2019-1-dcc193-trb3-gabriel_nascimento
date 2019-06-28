@@ -24,8 +24,7 @@ public class Item {
     private Long id;
     @NotBlank(message = "Campo Obrigatório")
     private String titulo;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
-    orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Etiqueta> listaEtiqueta;
     @OneToMany(fetch = FetchType.LAZY)
     private List<Anotacao> listaAnotacao;

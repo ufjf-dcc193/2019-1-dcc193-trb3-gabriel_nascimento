@@ -30,8 +30,7 @@ public class Usuario {
     private String descricao;
     @NotBlank(message = "Campo obrigatório")
     private String email;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
-    orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Anotacao> listAnotacoes;
 
     public Long getId() {
