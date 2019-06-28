@@ -1,5 +1,8 @@
 package br.dcc.trab3.demo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +36,11 @@ public class AnotacaoController {
 
     @RequestMapping("/criar")
     public String criarEtiqueta(Model model, HttpSession session){
+        List<Usuario> listUsuario = new ArrayList<>();
+        Usuario usuario = (Usuario) session.getAttribute("ativo");
+        listUsuario.add(usuario);
         model.addAttribute("anotacao", new Anotacao());
-        model.addAttribute("usuario", session.getAttribute("ativo"));
+        model.addAttribute("listUsuario", listUsuario);
         return "anotacao/anotacao-form";
     }
     

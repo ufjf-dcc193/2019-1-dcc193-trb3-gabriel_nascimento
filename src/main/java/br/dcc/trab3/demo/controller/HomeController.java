@@ -36,10 +36,9 @@ public class HomeController {
   @PostMapping("/efetuarLogin")
     public String login(Usuario usuario, Model model, HttpSession session){
         Usuario usuarioQuery = usuarios.findFirstByEmailAndCodigoAcesso(usuario.getEmail(),usuario.getCodigoAcesso());
-        System.out.println(usuario.toString());
+        System.out.println(usuarioQuery.toString());
         if(usuarioQuery != null){
             session.setAttribute("ativo", usuarioQuery);
-            session.setAttribute("nomeUsuarioLogado", usuarioQuery.getNome());
             return "redirect:/home";
         }else{
             return "redirect:/";
@@ -49,7 +48,6 @@ public class HomeController {
     @GetMapping("/sair")
     public String sair(Model model, HttpSession session){
       session.removeAttribute("ativo");
-      session.removeAttribute("nomeUsuarioLogado");
       model.addAttribute("usuario", new Usuario());
       return "redirect:/";
     }
