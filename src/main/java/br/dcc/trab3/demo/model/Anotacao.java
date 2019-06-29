@@ -17,19 +17,22 @@ import javax.validation.constraints.NotBlank;
 public class Anotacao {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank(message = "Campo obrigatório")
     private String titulo;
     @NotBlank(message = "Campo obrigatório")
     private String descricao;
     private String url;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Usuario usuario;
     private String dataInclusao;
     private String dataAlteracao;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Usuario usuario;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     private Vinculo vinculo;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     private Item item;
 

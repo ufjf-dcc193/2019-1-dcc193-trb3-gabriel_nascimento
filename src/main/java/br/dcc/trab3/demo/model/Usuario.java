@@ -1,14 +1,9 @@
 package br.dcc.trab3.demo.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -20,7 +15,7 @@ import javax.validation.constraints.NotBlank;
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank(message = "Campo obrigatório")
     private String nome;
@@ -30,9 +25,7 @@ public class Usuario {
     private String descricao;
     @NotBlank(message = "Campo obrigatório")
     private String email;
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Anotacao> listAnotacoes;
-
+    
     public Long getId() {
         return id;
     }
@@ -73,6 +66,31 @@ public class Usuario {
         this.email = email;
     }
 
+    public Usuario id(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public Usuario nome(String nome) {
+        this.nome = nome;
+        return this;
+    }
+
+    public Usuario codigoAcesso(String codigoAcesso) {
+        this.codigoAcesso = codigoAcesso;
+        return this;
+    }
+
+    public Usuario descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
+    }
+
+    public Usuario email(String email) {
+        this.email = email;
+        return this;
+    }
+
     public Usuario() {
     }
 
@@ -85,14 +103,6 @@ public class Usuario {
         this.codigoAcesso = codigoAcesso;
         this.descricao = descricao;
         this.email = email;
-    }
-
-    public List<Anotacao> getListAnotacoes() {
-        return listAnotacoes;
-    }
-
-    public void setListAnotacoes(List<Anotacao> listAnotacoes) {
-        this.listAnotacoes = listAnotacoes;
     }
 
     @Override

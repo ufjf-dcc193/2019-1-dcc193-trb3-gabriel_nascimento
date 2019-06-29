@@ -81,7 +81,6 @@ public class AnotacaoController {
 
     @GetMapping("/editar/{id}")
     public String editarRevisao(@PathVariable Long id, Model model, HttpSession session){
-        Calendar c = Calendar.getInstance();
         List<Usuario> listUsuario = new ArrayList<>();
         Usuario usuario = (Usuario) session.getAttribute("ativo");
         listUsuario.add(usuario);

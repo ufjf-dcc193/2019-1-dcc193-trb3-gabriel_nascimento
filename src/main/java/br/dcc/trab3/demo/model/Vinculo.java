@@ -6,8 +6,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -18,16 +18,14 @@ import javax.persistence.Table;
 public class Vinculo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
     private Item itemOrigem;
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Item itemDestino;
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Etiqueta> listaEtiqueta;
-    @OneToMany(fetch = FetchType.LAZY)
-	private List<Anotacao> listaAnotacao;
 	
 	public Long getId() {
 		return id;
@@ -53,29 +51,21 @@ public class Vinculo {
 	public void setListaEtiqueta(List<Etiqueta> listaEtiqueta) {
 		this.listaEtiqueta = listaEtiqueta;
 	}
-	public List<Anotacao> getListaAnotacao() {
-		return listaAnotacao;
-	}
-	public void setListaAnotacao(List<Anotacao> listaAnotacao) {
-		this.listaAnotacao = listaAnotacao;
-	}
-
+	
     public Vinculo() {
     }
 
-    public Vinculo(Long id, Item itemOrigem, Item itemDestino, List<Etiqueta> listaEtiqueta,
-            List<Anotacao> listaAnotacao) {
-        this.id = id;
-        this.itemOrigem = itemOrigem;
-        this.itemDestino = itemDestino;
-        this.listaEtiqueta = listaEtiqueta;
-        this.listaAnotacao = listaAnotacao;
-	}
-	
 	public Vinculo(Item itemOrigem, Item itemDestino) {
         this.itemOrigem = itemOrigem;
         this.itemDestino = itemDestino;
 	}
+
+	public Vinculo(Long id, Item itemOrigem, Item itemDestino, List<Etiqueta> etiqueta) {
+        this.id = id;
+        this.itemOrigem = itemOrigem;
+        this.itemDestino = itemDestino;
+        this.listaEtiqueta = etiqueta;
+    }
 	
 	@Override
     public String toString() {

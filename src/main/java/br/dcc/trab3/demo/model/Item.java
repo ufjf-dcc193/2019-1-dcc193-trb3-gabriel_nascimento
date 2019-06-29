@@ -2,13 +2,12 @@ package br.dcc.trab3.demo.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -24,13 +23,9 @@ public class Item {
     private Long id;
     @NotBlank(message = "Campo Obrigatório")
     private String titulo;
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Etiqueta> listaEtiqueta;
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Anotacao> listaAnotacao;
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Vinculo> listaVinculo;
-
+    
     public Long getId() {
         return id;
     }
@@ -55,22 +50,6 @@ public class Item {
         this.listaEtiqueta = listaEtiqueta;
     }
 
-    public List<Anotacao> getListaAnotacao() {
-        return listaAnotacao;
-    }
-
-    public void setListaAnotacao(List<Anotacao> listaAnotacao) {
-        this.listaAnotacao = listaAnotacao;
-    }
-
-    public List<Vinculo> getListaVinculo() {
-        return listaVinculo;
-    }
-
-    public void setListaVinculo(List<Vinculo> listaVinculo) {
-        this.listaVinculo = listaVinculo;
-    }
-
     public Item() {
     }
 
@@ -80,7 +59,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item [id=" + id + ", titulo=" + titulo + ", vínculos=" + listaVinculo + "]";
+        return "Item [id=" + id + ", titulo=" + titulo + ", etiquetas=" + getListaEtiqueta() + "]";
     }
    
 }
