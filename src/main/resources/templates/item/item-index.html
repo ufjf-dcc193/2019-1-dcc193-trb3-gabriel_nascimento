@@ -22,6 +22,7 @@
               <tr>
                 <th>#</th>  
                 <th>Título</th>
+                <th scope="col">Etiqueta</th>
                 <th></th>
               </tr>
             </thead>
@@ -29,6 +30,11 @@
                 <tr th:each="item:${listItens}">
                     <td th:text=${item.id}></td>
                     <td th:text=${item.titulo}></td>
+                    <td>
+                        <div th:each="etiqueta: ${item.listaEtiqueta}">
+                            <span th:text="${etiqueta.titulo}"></span>
+                        </div>
+                    </td>
                     <td >
                         <a class="btn btn-warning" th:href="@{'./editar/' + ${item.id}}"
                         role="button">Editar</a>

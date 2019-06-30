@@ -23,7 +23,8 @@
                 <th>#</th>  
                 <th>Item Origem</th>
                 <th>Item Destino</th>
-                <th></th>
+                <th>Item Destino</th>
+                <th>Etiquetas</th>
               </tr>
             </thead>
             <tbody>
@@ -31,6 +32,11 @@
                     <td th:text=${vinculo.id}></td>
                     <td th:text=${vinculo.itemOrigem.titulo}></td>
                     <td th:text=${vinculo.itemDestino.titulo}></td>
+                    <td>
+                        <div th:each="etiqueta: ${vinculo.listaEtiqueta}">
+                            <span th:text="${etiqueta.titulo}"></span>
+                        </div>
+                    </td>
                     <td >
                         <a class="btn btn-warning" th:href="@{'./editar/' + ${vinculo.id}}"
                         role="button">Editar</a>

@@ -25,7 +25,7 @@ public class Vinculo {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Item itemDestino;
     @ManyToMany(fetch = FetchType.LAZY)
-    private List<Etiqueta> listaEtiqueta;
+	private List<Etiqueta> listaEtiqueta;
 	
 	public Long getId() {
 		return id;
@@ -65,7 +65,8 @@ public class Vinculo {
         this.itemOrigem = itemOrigem;
         this.itemDestino = itemDestino;
         this.listaEtiqueta = etiqueta;
-    }
+	}
+	
 	
 	@Override
     public String toString() {
