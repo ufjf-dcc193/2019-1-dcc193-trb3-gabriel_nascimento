@@ -44,14 +44,15 @@ public class DemoApplication {
 	@Bean
 	InitializingBean sendDatabase() {
 		return () -> {
-			itens.save(new Item("Item 1"));
-			itens.save(new Item("Item 2"));
 			etiquetas.save(new Etiqueta(null, "Fisica 1", "Mecânica 1", "www.ufjf.br"));
-			usuarios.save(new Usuario(null, "admin", "admin","administradr", "admin@admin.com"));
+			etiquetas.save(new Etiqueta(null, "Matematica", "Prob 1", "www.ufjf.br"));
+			itens.save(new Item(null, "Item 1", etiquetas.findAll()));
+			itens.save(new Item(null, "Item 2"));
+			usuarios.save(new Usuario(null, "admin", "admin","administrador", "admin@admin.com"));
 			usuarios.save(new Usuario(null, "Gabriel Nascimento", "DCC193", "Estudante de TI", "gabriel.nascimento@ice.ufjf.br"));
 			anotacoes.save(new Anotacao(null, "resenha", "descricao", "google.com", "02/03/2018", "02/03/2019",  usuarios.findById(1L).get(), itens.findById(1L).get()));
-			vinculos.save(new Vinculo(itens.findById(1L).get(), itens.findById(2L).get()));
-			
+			anotacoes.save(new Anotacao(null, "teste", "resumo", "dcc193.com", "02/03/2018", "12/03/2019",  usuarios.findById(2L).get(), itens.findById(2L).get()));			
+			vinculos.save(new Vinculo(null, itens.findById(1L).get(), itens.findById(2L).get(), etiquetas.findAll()));
 		};
 	}
 

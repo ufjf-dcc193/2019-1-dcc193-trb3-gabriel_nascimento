@@ -40,8 +40,9 @@ public class HomeController {
         if(usuarioQuery != null){
             session.setAttribute("ativo", usuarioQuery);
             return "redirect:/home";
+        }else{
+          return "redirect:/";
         }
-        return "redirect:/";
     }
 
     @GetMapping("/sair")

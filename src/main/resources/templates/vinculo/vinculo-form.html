@@ -29,20 +29,12 @@
                     </div>
               </select>
             </div>
-            <div class="form-group">
-                <label for="anotacao">Anotações</label>
-                <select class="custom-select" id="anotacao" name="listaAnotacao" multiple>
-                    <div class="container" th:each="anotacao: ${listAnotacoes}" th:object=${anotacao}>
-                        <option value="" th:value=*{id} th:text="*{titulo}"></option>
-                    </div>
-              </select>
-            </div>
             <div class="form-group form-check card">
               <label>Etiqueta:</label>
               <div class="row card-body">
                   <div class="col-6" th:each="etiqueta: ${listEtiquetas}" th:object=${etiqueta}>
                       <input class="form-check-input" type="checkbox" th:value="${etiqueta.id}"
-                          name="etiqueta">
+                          name="listaEtiqueta">
                       <label class="form-check-label" th:text="${etiqueta.titulo}">
                       </label>
                   </div>

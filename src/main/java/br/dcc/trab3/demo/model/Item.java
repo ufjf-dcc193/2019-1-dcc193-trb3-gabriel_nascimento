@@ -53,13 +53,20 @@ public class Item {
     public Item() {
     }
 
-    public Item(String titulo) {        
+    public Item(Long id, @NotBlank(message = "Campo Obrigatório") String titulo) {        
+        this.id = id;
         this.titulo = titulo;
     }
 
     @Override
     public String toString() {
         return "Item [id=" + id + ", titulo=" + titulo + ", etiquetas=" + getListaEtiqueta() + "]";
+    }
+
+    public Item(Long id, @NotBlank(message = "Campo Obrigatório") String titulo, List<Etiqueta> listaEtiqueta) {
+        this.id = id;
+        this.titulo = titulo;
+        this.listaEtiqueta = listaEtiqueta;
     }
    
 }

@@ -11,7 +11,7 @@
     <div class="container">
         <div th:replace="fragments/header :: header"></div>
         <br/>
-        <h5 style="text-align: center">Novo item</h5>
+        <h5 style="text-align: center">Editar item</h5>
         <form th:action="@{./{id}(id=*{id})}" th:object="${item}" method="POST">
             <input type="text" th:field="*{id}" class="d-none" />
             <div class="form-group">
@@ -22,9 +22,10 @@
             <div class="form-group form-check card">
                 <label>Etiquetas:</label>
                 <div class="row card-body">
-                    <div class="col-6" th:each="etiqueta: ${listEtiqueta}" th:object=${Etiqueta}>
-                        <input class="form-check-input" type="checkbox" th:value="${etiqueta.id}"
-                            name="etiqueta">
+                    <div class="col-6" th:each="etiqueta, stat: ${listEtiquetas}" th:object=${etiqueta}>
+                        <input class="form-check-input " type="checkbox"
+                            th:attr="checked=${item.listaEtiqueta.contains(etiqueta) ? true :false}"
+                            th:value="${etiqueta.id}" name="listaEtiqueta">
                         <label class="form-check-label" th:text="${etiqueta.titulo}">
                         </label>
                     </div>

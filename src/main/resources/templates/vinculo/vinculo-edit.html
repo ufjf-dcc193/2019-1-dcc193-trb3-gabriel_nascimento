@@ -18,7 +18,8 @@
                 <label>Item Origem</label>
                 <select class="custom-select" id="itemOrigem" name="itemOrigem">
                     <div class="container" th:each="item: ${listItens}" th:object=${item}>
-                      <option value="" th:value=*{id} th:text="*{titulo}"></option>
+                      <option th:attr="selected=${vinculo.itemOrigem.id == item.id ? true :false} "
+                       th:value=*{id} th:text="*{titulo}"></option>
                     </div>
               </select>
             </div>
@@ -26,15 +27,8 @@
                 <label>Item Destino</label>
                 <select class="custom-select" id="itemDestino" name="itemDestino">
                     <div class="container" th:each="item: ${listItens}" th:object=${item}>
-                      <option value="" th:value=*{id} th:text="*{titulo}"></option>
-                    </div>
-              </select>
-            </div>
-            <div class="form-group">
-                <label for="anotacao">Anotações</label>
-                <select class="custom-select" id="anotacao" name="listaAnotacao" multiple>
-                    <div class="container" th:each="anotacao: ${listAnotacoes}" th:object=${anotacao}>
-                        <option value="" th:value=*{id} th:text="*{titulo}"></option>
+                      <option th:attr="selected=${vinculo.itemDestino.id == item.id ? true :false} " 
+                      th:value=*{id} th:text="*{titulo}"></option>
                     </div>
               </select>
             </div>
@@ -43,21 +37,13 @@
               <div class="row card-body">
                   <div class="col-6" th:each="etiqueta, stat: ${listEtiquetas}" th:object=${etiqueta}>
                       <input class="form-check-input " type="checkbox"
-                          th:attr="checked=${vinculo.etiqueta.contains(etiqueta) ? true :false} "
-                          th:value="${etiqueta.id}" name="etiqueta">
+                          th:attr="checked=${vinculo.listaEtiqueta.contains(etiqueta) ? true :false}"
+                          th:value="${etiqueta.id}" name="listaEtiqueta">
                       <label class="form-check-label" th:text="${etiqueta.titulo}">
                       </label>
                   </div>
               </div>
           </div>
-            <div class="form-group">
-                <label for="etiqueta">Etiquetas</label>
-                <select class="custom-select" id="etiqueta" name="listaEtiqueta" multiple>
-                    <div class="container" th:each="etiqueta: ${listEtiquetas}" th:object=${etiqueta}>
-                      <option value="" th:value=*{id} th:text="*{titulo}"></option>
-                    </div>
-              </select>
-            </div>
             <input type="submit" class="btn btn-primary" />
             <input type="reset" class="btn btn-warning" />
         </form>   
