@@ -52,7 +52,6 @@ public class VinculoController {
     @RequestMapping("/criar")
     public String criarVinculo(Model model){
         model.addAttribute("vinculo", new Vinculo());
-        model.addAttribute("listAnotacoes", anotacoes.findAll());
         model.addAttribute("listEtiquetas", etiquetas.findAll());
         model.addAttribute("listItens", itens.findAll());
         return "vinculo/vinculo-form";
@@ -64,7 +63,6 @@ public class VinculoController {
         if(binding.hasErrors()){
             mv.setViewName("vinculo/vinculo-form");
             mv.addObject("vinculo", vinculo);
-            mv.addObject("listAnotacoes", anotacoes.findAll());
             mv.addObject("listEtiquetas", etiquetas.findAll());
             mv.addObject("listItens", itens.findAll());
             return mv;
@@ -77,7 +75,6 @@ public class VinculoController {
     @GetMapping("/editar/{id}")
     public String preEditarVinculo(@PathVariable Long id, Model model){
         model.addAttribute("vinculo", vinculos.findById(id).get());
-        model.addAttribute("listAnotacoes", anotacoes.findAll());
         model.addAttribute("listEtiquetas", etiquetas.findAll());
         model.addAttribute("listItens", itens.findAll());
         return "vinculo/vinculo-edit";
@@ -89,7 +86,6 @@ public class VinculoController {
        if (binding.hasErrors()) {
             mv.setViewName("vinculo/vinculo-form");
             mv.addObject("vinculo", vinculo);
-            mv.addObject("listAnotacoes", anotacoes.findAll());
             mv.addObject("listEtiquetas", etiquetas.findAll());
             mv.addObject("listItens", itens.findAll());
             return mv;

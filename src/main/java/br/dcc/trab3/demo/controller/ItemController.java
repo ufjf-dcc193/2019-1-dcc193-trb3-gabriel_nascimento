@@ -1,5 +1,7 @@
 package br.dcc.trab3.demo.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -19,6 +21,7 @@ import br.dcc.trab3.demo.dao.ItemRepository;
 import br.dcc.trab3.demo.dao.VinculoRepository;
 import br.dcc.trab3.demo.model.Item;
 import br.dcc.trab3.demo.model.Usuario;
+import br.dcc.trab3.demo.model.Vinculo;
 
 /**
  * ItemController
@@ -91,6 +94,23 @@ public class ItemController {
     public String deletarEtiqueta(@PathVariable Long id){
         itens.deleteById(id);
         return "redirect:/item/";
+    }
+
+    @RequestMapping("/controladorVinculo/{id}")
+    public String gerenciarVinculo(@PathVariable Long id, Model model, HttpSession session) {
+        session.setAttribute("idItem", id);
+        Item item = itens.findById(id).get();
+        List<Vinculo> listaVinculo = vinculos.findAllByItemOrigemOrItemDestino(item, item);
+        model.addAttribute("item", item);
+        model.addAttribute("listVinculo", listaVinculo);
+        return "item/item-vinculos";
+    }
+
+    @RequestMapping("/deletarVinculo/{id}")
+    public String deletarVinculo(@PathVariable Long id, HttpSession session) {
+        Long idItem = (Long) session.getAttribute("idItem");
+        vinculos.deleteById(id);
+        return "redirect:/item/controladorVinculo/" + idItem;
     }
     
 }

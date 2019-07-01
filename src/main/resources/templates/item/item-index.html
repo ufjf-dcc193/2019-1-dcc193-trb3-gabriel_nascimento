@@ -36,6 +36,8 @@
                         </div>
                     </td>
                     <td >
+                        <a class="btn btn-secondary" th:href="@{'./controladorVinculo/' + ${item.id}}"
+                            role="button">Gerenciar</a>
                         <a class="btn btn-warning" th:href="@{'./editar/' + ${item.id}}"
                         role="button">Editar</a>
                         <a class="btn btn-danger" th:href="@{'./deletar/' + ${item.id}}"
