@@ -1,5 +1,8 @@
 package br.dcc.trab3.demo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.dcc.trab3.demo.dao.EtiquetaRepository;
+import br.dcc.trab3.demo.dao.ItemRepository;
 import br.dcc.trab3.demo.model.Etiqueta;
 import br.dcc.trab3.demo.model.Usuario;
 
@@ -26,6 +30,9 @@ public class EtiquetaController {
 
     @Autowired
     EtiquetaRepository etiquetas;
+
+    @Autowired
+    ItemRepository itens;
 
     @RequestMapping("")
     public String homeEtiqueta(Model model, HttpSession session){
@@ -60,6 +67,13 @@ public class EtiquetaController {
     public String preEditarEtiqueta(@PathVariable Long id, Model model){
         model.addAttribute("etiqueta", etiquetas.findById(id).get());
         return "etiqueta/etiqueta-edit";
+    }
+
+    @GetMapping("/gerenciar/{id}")
+    public String gerenciarEtiqueta(@PathVariable Long id, Model model){
+        Etiqueta aux = etiquetas.findById(id).get();
+        model.addAttribute("titulo", aux.getTitulo());
+        return "etiqueta/etiqueta-itens";
     }
 
     @PostMapping("/editar/{id}")

@@ -27,6 +27,10 @@ public class Etiqueta {
     
     public Etiqueta(){}
 
+    public Etiqueta(String nome){
+        this.titulo = nome;
+    }
+
     public Long getId() {
         return id;
     }

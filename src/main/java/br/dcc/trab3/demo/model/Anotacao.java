@@ -36,7 +36,49 @@ public class Anotacao {
     @ManyToOne(fetch = FetchType.LAZY)
     private Item item;
 
-    
+    /**
+     * @return the item
+     */
+    public Item getItem() {
+        return item;
+    }
+
+    /**
+     * @return the vinculo
+     */
+    public Vinculo getVinculo() {
+        return vinculo;
+    }
+
+
+    /**
+     * @return the url
+     */
+    public String getUrl() {
+        return url;
+    }
+
+
+    /**
+     * @param item the item to set
+     */
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    /**
+     * @param url the url to set
+     */
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    /**
+     * @param vinculo the vinculo to set
+     */
+    public void setVinculo(Vinculo vinculo) {
+        this.vinculo = vinculo;
+    }
 
     public Long getId() {
         return id;

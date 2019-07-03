@@ -25,7 +25,6 @@
                 <th>Descrição Textual</th>
                 <th>URL</th>
                 <th></th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -35,10 +34,10 @@
                     <td th:text=${etiqueta.descricao}></td>
                     <td th:text=${etiqueta.URL}></td>
                     <td>
+                        <a class="btn btn-secondary" th:href="@{'./gerenciar/' + ${etiqueta.id}}"
+                            role="button">Gerenciar</a>    
                         <a class="btn btn-warning" th:href="@{'./editar/' + ${etiqueta.id}}"
                         role="button">Editar</a>
-                    </td>
-                    <td>
                         <a class="btn btn-danger" th:href="@{'./deletar/' + ${etiqueta.id}}"
                         role="button">Excluir</a>
                     </td>

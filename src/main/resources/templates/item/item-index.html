@@ -35,7 +35,9 @@
                             <span th:text="${etiqueta.titulo}"></span>
                         </div>
                     </td>
-                    <td >
+                    <td>
+                        <a class="btn btn-secondary-outline" th:href="@{'./anotacoes/' + ${item.id}}"
+                            role="button">Anotações</a>
                         <a class="btn btn-secondary" th:href="@{'./controladorVinculo/' + ${item.id}}"
                             role="button">Gerenciar</a>
                         <a class="btn btn-warning" th:href="@{'./editar/' + ${item.id}}"

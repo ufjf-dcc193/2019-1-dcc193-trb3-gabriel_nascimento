@@ -20,7 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.dcc.trab3.demo.dao.AnotacaoRepository;
+import br.dcc.trab3.demo.dao.ItemRepository;
+import br.dcc.trab3.demo.dao.VinculoRepository;
 import br.dcc.trab3.demo.model.Anotacao;
+import br.dcc.trab3.demo.model.Item;
 import br.dcc.trab3.demo.model.Usuario;
 
 /**
@@ -32,6 +35,12 @@ public class AnotacaoController {
 
     @Autowired
     AnotacaoRepository anotacoes;
+
+    @Autowired
+    ItemRepository itens;
+
+    @Autowired
+    VinculoRepository vinculos;
 
     @RequestMapping("")
     public String homeEtiqueta(Model model, HttpSession session){
@@ -57,6 +66,24 @@ public class AnotacaoController {
         model.addAttribute("listUsuario", listUsuario);
         return "anotacao/anotacao-form";
     }
+
+    @RequestMapping("/criarAnotacaoItem/{id}")
+    public String criarAnotacaoItem(@PathVariable Long id, Model model, HttpSession session){
+        Item item = itens.findById(id).get();
+        Calendar c = Calendar.getInstance();
+        Date data = c.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        List<Usuario> listUsuario = new ArrayList<>();
+        Usuario usuario = (Usuario) session.getAttribute("ativo");
+        listUsuario.add(usuario);
+        Anotacao anotacao = new Anotacao();
+        anotacao.setItem(item);
+        anotacao.setDataInclusao(sdf.format(data));
+        model.addAttribute("anotacao", anotacao);
+        model.addAttribute("listUsuario", listUsuario);
+        return "anotacao/anotacao-form";
+    }
+
 
     @PostMapping("/salvar")
     public ModelAndView salvarAnotacao(@Valid Anotacao anotacao, BindingResult binding, HttpSession session){

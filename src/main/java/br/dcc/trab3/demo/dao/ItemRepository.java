@@ -15,5 +15,7 @@ import br.dcc.trab3.demo.model.Item;
 public interface ItemRepository extends JpaRepository<Item, Long>{
 
     List<Item> findAllDistinctByTituloContainingAndListaEtiquetaIn(String titulo, List<Etiqueta> etiqueta);
+
+    List<Item> findByListaEtiqueta(List<Etiqueta> listaEtiqueta);
     
 }
