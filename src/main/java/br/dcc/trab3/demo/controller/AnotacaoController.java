@@ -64,6 +64,8 @@ public class AnotacaoController {
         anotacao.setDataInclusao(sdf.format(data));
         model.addAttribute("anotacao", anotacao);
         model.addAttribute("listUsuario", listUsuario);
+        model.addAttribute("listVinculos", vinculos.findAll());
+        model.addAttribute("listItens", itens.findAll());
         return "anotacao/anotacao-form";
     }
 
@@ -81,7 +83,7 @@ public class AnotacaoController {
         anotacao.setDataInclusao(sdf.format(data));
         model.addAttribute("anotacao", anotacao);
         model.addAttribute("listUsuario", listUsuario);
-        return "anotacao/anotacao-form";
+        return "anotacao/anotacao-form-item";
     }
 
 

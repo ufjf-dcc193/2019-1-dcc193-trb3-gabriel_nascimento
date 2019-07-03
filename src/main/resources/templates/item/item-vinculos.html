@@ -51,8 +51,29 @@
             </tbody>
         </table>
         <h6 style="text-align: center"><b>Gerenciamento de anotações</b></h6>
-        <a class="btn btn-primary" th:href="@{'../../anotacao/criarAnotacaoItem/' + ${item.id}}"
-            role="button">Nova</a>               
+        <!--<a class="btn btn-primary" th:href="@{'../../anotacao/criarAnotacaoItem/' + ${item.id}}"
+            role="button">Nova</a>-->
+            <table class="table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Anotacão</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="anotacao:${listAnotacao}">
+                            <td th:text=${anotacao.id}></td>
+                            <td th:text=${anotacao.titulo}></td>
+                            <td >
+                                <a class="btn btn-warning" th:href="@{'../../anotacao/editar/' + ${anotacao.id}}"
+                                role="button">Editar</a>
+                                <a class="btn btn-danger" th:href="@{'./deletarAnotacao/' + ${anotacao.id}}"
+                                role="button">Excluir</a>
+                            </td>
+                          </tr>
+                    </tbody>
+                </table>                   
         <div th:replace="fragments/footer :: footer"></div>
     </div>
     <script src="../../webjars/bootstrap/4.3.1/js/bootstrap.min.js" type="text/javascript"></script>

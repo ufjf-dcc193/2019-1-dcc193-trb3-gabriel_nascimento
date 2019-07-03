@@ -166,5 +166,16 @@ public class Anotacao {
         this.vinculo = vinculo;
     }
 
+    public Anotacao(Long id, String titulo, String descricaoTextual, String url, String dtInclusao, String dtAlteracao, Usuario usuario, Vinculo vinculo) {
+        this.id = id;
+        this.titulo = titulo;
+        this.descricao = descricaoTextual;
+        this.url = url;
+        this.dataInclusao = dtInclusao;
+        this.dataAlteracao = dtAlteracao;
+        this.usuario = usuario;
+        this.vinculo = vinculo;
+    }
+
     public Anotacao(){}
 }

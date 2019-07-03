@@ -60,7 +60,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item [id=" + id + ", titulo=" + titulo + ", etiquetas=" + getListaEtiqueta() + "]";
+        return "Item [id=" + id + ", titulo=" + titulo +"]";
     }
 
     public Item(Long id, @NotBlank(message = "Campo Obrigatório") String titulo, List<Etiqueta> listaEtiqueta) {

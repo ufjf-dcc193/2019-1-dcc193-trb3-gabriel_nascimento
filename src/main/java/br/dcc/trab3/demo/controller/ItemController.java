@@ -19,6 +19,7 @@ import br.dcc.trab3.demo.dao.AnotacaoRepository;
 import br.dcc.trab3.demo.dao.EtiquetaRepository;
 import br.dcc.trab3.demo.dao.ItemRepository;
 import br.dcc.trab3.demo.dao.VinculoRepository;
+import br.dcc.trab3.demo.model.Anotacao;
 import br.dcc.trab3.demo.model.Item;
 import br.dcc.trab3.demo.model.Usuario;
 import br.dcc.trab3.demo.model.Vinculo;
@@ -101,8 +102,10 @@ public class ItemController {
         session.setAttribute("idItem", id);
         Item item = itens.findById(id).get();
         List<Vinculo> listaVinculo = vinculos.findAllByItemOrigemOrItemDestino(item, item);
+        List<Anotacao> listaAnotacao = anotacoes.findAllByItemOrderByDataInclusao(item);
         model.addAttribute("item", item);
         model.addAttribute("listVinculo", listaVinculo);
+        model.addAttribute("listAnotacao", listaAnotacao);
         return "item/item-vinculos";
     }
 

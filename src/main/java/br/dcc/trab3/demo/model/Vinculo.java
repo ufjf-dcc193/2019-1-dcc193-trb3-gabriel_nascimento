@@ -70,7 +70,7 @@ public class Vinculo {
 	
 	@Override
     public String toString() {
-        return "Vinculo [id=" + id + ", itemDestino=" + itemDestino + ", itemOrigem=" + itemOrigem + "]";
+        return "Vinculo [ItemDestino=" + itemDestino.getTitulo() + ", itemOrigem=" + itemOrigem.getTitulo() + "]";
     }
 
 }

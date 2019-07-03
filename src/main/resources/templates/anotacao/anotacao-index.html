@@ -27,8 +27,6 @@
                 <th>Usuário</th>
                 <th>Data da inclusão</th>
                 <th>Data da alteração</th>
-                <th>Item</th>
-                <th>Vínculo</th>
               </tr>
             </thead>
             <tbody>
@@ -40,8 +38,6 @@
                     <td th:text=${anotacoes.usuario.nome}></td>
                     <td th:text=${anotacoes.dataInclusao}></td>
                     <td th:text=${anotacoes.dataAlteracao}></td>
-                    <td th:text=${anotacoes.item}></td>
-                    <td th:text=${anotacoes.vinculo}></td>
                     <td>
                         <a class="btn btn-warning" th:href="@{'./editar/' + ${anotacoes.id}}"
                         role="button">Editar</a>
