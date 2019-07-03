@@ -116,6 +116,8 @@ public class AnotacaoController {
         Anotacao anotacao = anotacoes.findById(id).get();
         model.addAttribute("anotacao", anotacao);
         model.addAttribute("listUsuario", listUsuario);
+        model.addAttribute("listVinculos", vinculos.findAll());
+        model.addAttribute("listItens", itens.findAll());
         return "anotacao/anotacao-edit";
     }
 
