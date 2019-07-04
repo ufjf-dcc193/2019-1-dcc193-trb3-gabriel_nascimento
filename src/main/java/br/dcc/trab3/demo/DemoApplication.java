@@ -40,7 +40,7 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
-
+	/*
 	@Bean
 	InitializingBean sendDatabase() {
 		return () -> {
@@ -55,5 +55,6 @@ public class DemoApplication {
 			vinculos.save(new Vinculo(null, itens.findById(1L).get(), itens.findById(2L).get(), etiquetas.findAll()));
 		};
 	}
+	*/
 
 }
